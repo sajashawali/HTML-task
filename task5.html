@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video, Audio, and Location</title>
+</head>
+<body>
+    <h1>Multimedia and Location Example</h1>
+    
+    <h2>Video</h2>
+    <video width="640" height="360" controls>
+        <source src="https://www.youtube.com/watch?v=-g41MUVhGL0.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <h2>Audio</h2>
+    <audio controls>
+        <source src="https://suratmp3.com/s56/2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <h2>Your Current Location</h2>
+    <button onclick="getLocation()">Show Location</button>
+    <p id="location"></p>
+    
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("location").innerHTML = 
+            "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+</body>
+</html>
